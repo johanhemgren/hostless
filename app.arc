@@ -3,6 +3,5 @@ hostless
 
 @http
 get /
-get /ess
-get /:dataString
+get /ess/:dataString
 post /make
