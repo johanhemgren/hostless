@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Websites stored in the URL itself",
   "scripts": {
-    "start": "cross-env NODE_ENV=testing npx sandbox"
+    "start": "cross-env NODE_ENV=staging npx sandbox"
   },
   "devDependencies": {
     "@architect/functions": "latest",
