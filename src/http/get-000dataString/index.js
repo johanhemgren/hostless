@@ -1,5 +1,18 @@
+const { parse } = require('tldts');
+const { decrypt } = require('@architect/shared/encryption');
+const { decompress } = require('@architect/shared/compression');
+const { errorPage } = require('@architect/shared/errorPage')
+
 exports.handler = async function http(req) {
-return {
+  const {subdomain: remoteHost} = parse(req.headers.host);
+  const decryptedString = await decrypt(req.pathParameters.dataString, remoteHost);
+  const {title, bodyHtml} = decompress(decryptedString);
+
+  if (!title || !bodyHtml) {
+    return errorPage;
+  }
+
+  return {
     headers: {
       'content-type': 'text/html; charset=utf8',
       'cache-control': 'no-cache, no-store, must-revalidate, max-age=0, s-maxage=0'
@@ -10,18 +23,13 @@ return {
       <html lang=en>
         <head>
           <meta charset=utf-8>
-          <title>Hi!</title>
-          <link rel="stylesheet" href="https://static.begin.app/starter/default.css">
-          <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" rel="icon" type="image/x-icon">
+          <title>${title}</title>
+          <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css">
         </head>
         <body>
-      
-          <h1 class="center-text">
-            Nothing to see here...
-          </h1>
-      
+          ${bodyHtml}
         </body>
-      </html>`
+      </html>`,
   }
 }
 

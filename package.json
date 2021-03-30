@@ -1,9 +1,9 @@
 {
-  "name": "begin-app",
+  "name": "hostless",
   "version": "0.0.0",
-  "description": "Begin basic Hello World! app for Node",
+  "description": "Websites stored in the URL itself",
   "arc": {
-    "app": "hello-world",
+    "app": "hostless",
     "http": [
       {
         "/": {
@@ -21,5 +21,10 @@
     "@architect/sandbox": "^3.3.6",
     "@begin/data": "latest",
     "cross-env": "^7.0.3"
+  },
+  "dependencies": {
+    "crypto-js": "^4.0.0",
+    "lzutf8": "^0.6.0",
+    "tldts": "^5.7.18"
   }
 }
