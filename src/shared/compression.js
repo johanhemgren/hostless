@@ -3,11 +3,6 @@ const {compress, decompress, encodeBase64, decodeBase64} = require('lzutf8');
 const compressString = (string) => {
   const compressed = compress(JSON.stringify(string));
 
-  console.log(`
-    original: ${JSON.stringify(string).length}
-    compressed: ${encodeBase64(compressed).length}
-  `);
-
   return encodeBase64(compressed);
 }
 

@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "description": "Websites stored in the URL itself",
   "scripts": {
-    "start": "cross-env NODE_ENV=testing npx sandbox",
-    "lint": "eslint src --ignore-pattern node_modules --fix"
+    "start": "cross-env NODE_ENV=testing npx sandbox"
   },
   "devDependencies": {
     "@architect/functions": "latest",

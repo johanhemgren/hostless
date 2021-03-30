@@ -26,7 +26,7 @@ const getHash = async (hostname, password=null) => {
   if (!hostname) return null;
 
   const hash = createHash('sha256');
-  const saltString = password || await getDnsPasswordString(hostname);
+  const saltString = password ?? await getDnsPasswordString(hostname);
 
   hash.update(process.env.HASH + hostname + saltString);
 

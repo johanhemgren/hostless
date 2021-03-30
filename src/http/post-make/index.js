@@ -1,3 +1,4 @@
+const { HOST } = require('@architect/shared/constants')
 const { encrypt, setPassword } = require('@architect/shared/encryption')
 const { compress } = require('@architect/shared/compression')
 
@@ -24,7 +25,7 @@ exports.handler = async function http(req) {
   const compressedHtml = compress({title, bodyHtml}, hostname);
   const password = setPassword(inputPassword);
   const encryptedString = await encrypt(compressedHtml, hostname, password);
-  const url = `http://${hostname}.hos.tl:3333/${encodeURIComponent(encryptedString)}`;
+  const url = `http://${hostname}.${HOST}/ess/${encodeURIComponent(encryptedString)}`;
 
   return {
     headers: {
