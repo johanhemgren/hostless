@@ -20,7 +20,7 @@ exports.handler = async function http(req) {
   // }
 
   const {title, hostUrl, bodyHtml, preferedPassword} = getPostedData(req.body);
-  const inputPassword = preferedPassword !== '' ? preferedPassword : null;
+  const inputPassword = (preferedPassword !== '') ? preferedPassword : null;
   const hostname = hostUrl.replace(/(^\w+:|^)\/\//, '');
   const compressedHtml = compress({title, bodyHtml}, hostname);
   const password = setPassword(inputPassword);
