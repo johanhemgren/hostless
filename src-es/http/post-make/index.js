@@ -36,15 +36,23 @@ exports.handler = async function http(req) {
     body: JSON.stringify({
       html: `
       <p class="mb-3">Add this as a TXT-record to your domains DNS:</p>
-      <code class="inline-block p-4 mb-1 rounded border border-indigo-600 bg-indigo-100 ">"hostl=${escapeHtml(password)}"</code>
+      <p class="mb-6">
+        <code class="inline-block p-4 mb-1 rounded border border-indigo-600 bg-indigo-100 ">"hostl=${escapeHtml(password)}"</code>
+      </p>
       <p class="mb-6 text-sm text-gray-500">Don't forget to include the double quotes</p>
-      
-      <p class="mb-3">...and optionally the following as a CNAME-record:</p>
-      <code class="inline-block p-4 mb-6 rounded border border-indigo-600 bg-indigo-100 ">${hostname}</code>
 
       <p class="mb-3">When this is done you can access the site here:</p>
-      <a class="inline-block p-4 bg-indigo-500 text-white rounded" href="${url}" target="_blank">${hostname}.${HOST}/ess/&hellip;</a>
-      <a class="inline-block p-4 bg-indigo-500 text-white rounded" href="${hostUrl}" target="_blank">${hostname}</a>
+      <p class="mb-6">
+        <a class="inline-block p-4 bg-indigo-500 text-white rounded" href="${url}" target="_blank">${hostname}.${HOST}/ess/&hellip;</a>
+      </p>
+
+      <p class="mb-3">...and optionally the following as a CNAME-record:</p>
+      <p class="mb-6">
+        <code class="inline-block p-4 rounded border border-indigo-600 bg-indigo-100 ">${hostname}</code>
+      </p>
+      <p class="mb-6">
+        <a class="inline-block p-4 bg-indigo-500 text-white rounded" href="${hostUrl}" target="_blank">${hostname}</a>
+      </p>
       `
     }),
   }
