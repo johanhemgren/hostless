@@ -1,4 +1,9 @@
-const arc=require("@architect/functions"),{formFields}=require("./formFields"),{classNames}=require("./classNames"),{exampleHtml}=require("./exampleHtml"),html=`
+const arc = require('@architect/functions');
+const { formFields } = require('./assets/formFields');
+const { classNames } = require('./assets/classNames');
+const { exampleHtml } = require('./assets/exampleHtml');
+
+const html = `
 <!doctype html>
 <html lang=en>
   <head>
@@ -11,12 +16,12 @@ const arc=require("@architect/functions"),{formFields}=require("./formFields"),{
       <div class="w-full max-w-screen-lg bg-white rounded shadow-lg p-8 m-4">
         <h1 class="${classNames.heading}">Create a <strong style="white-space:nowrap;">hos.tl/ess</strong> site</h1>
         <form class="transition-opacity duration-500">
-          ${formFields.map(({id:s,type:t,label:e,value:l})=>`
+          ${formFields.map(({id, type, label, value}) => (`
             <div class="${classNames.group}">
-              <label for="${s}" class="${classNames.label}">${e}</label>
-              <input type="${t}" id="${s}" name="${s}" class="${classNames.input}" value="${l}"/>
+              <label for="${id}" class="${classNames.label}">${label}</label>
+              <input type="${type}" id="${id}" name="${id}" class="${classNames.input}" value="${value}"/>
             </div>
-          `).join("")}
+          `)).join('')}
           <div class="${classNames.group}">
             <label for="bodyHtml" class="${classNames.label}">HTML Content</label>
             <textarea id="bodyHtml" name="bodyHtml" class="${classNames.input}">${exampleHtml}</textarea>
@@ -27,6 +32,8 @@ const arc=require("@architect/functions"),{formFields}=require("./formFields"),{
         </form>
       </div>
     </div>
-    <script src=${arc.static("/dist/make.js")}></script>
+    <script src=${arc.static('/dist/make.js')}></script>
   </body>
-</html>`;exports.html=html.trim();
+</html>`;
+
+exports.html = html.trim();

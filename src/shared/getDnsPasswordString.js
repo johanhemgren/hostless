@@ -1,15 +1,1 @@
-const { getTxtRecord } = require('./getTxtRecord');
-const { TXT_KEY_STRING } = require('./constants')
-
-exports.getDnsPasswordString = async (hostname) => {
-  let saltString = null;
-  const txtRecord = await getTxtRecord(hostname);
-
-  if (!!txtRecord && txtRecord.substr(0, TXT_KEY_STRING.length) === TXT_KEY_STRING) {
-    const [_, value] = txtRecord.split('=');
-
-    saltString = value;
-  }
-
-  return saltString;
-}
+const{getTxtRecord}=require("./getTxtRecord"),{TXT_KEY_STRING}=require("./constants");exports.getDnsPasswordString=async s=>{let e=null;const t=await getTxtRecord(s);if(!!t&&t.substr(0,TXT_KEY_STRING.length)===TXT_KEY_STRING){const[n,r]=t.split("=");e=r}return e};

@@ -1,9 +1,1 @@
-const dnsPromises = require('dns').promises;
-
-const getTxtRecord = async (hostname) => {
-  const [[txtRecord]] = await dnsPromises.resolve(hostname, 'TXT');
-
-  return txtRecord;
-}
-
-exports.getTxtRecord = getTxtRecord;
+const dnsPromises=require("dns").promises,getTxtRecord=async e=>{const[[s]]=await dnsPromises.resolve(e,"TXT");return s};exports.getTxtRecord=getTxtRecord;

@@ -1,4 +1,7 @@
-exports.errorPage={headers:{"content-type":"text/html; charset=utf8"},statusCode:404,body:`
+exports.errorPage = {
+  headers: {'content-type': 'text/html; charset=utf8'},
+  statusCode: 404,
+  body: `
     <!doctype html>
     <html lang=en>
       <head>
@@ -11,4 +14,5 @@ exports.errorPage={headers:{"content-type":"text/html; charset=utf8"},statusCode
           <h1 class="block w-full text-5xl font-black text-center text-grey-900 mb-6">404</h1>
         </div>
       </body>
-    </html>`};
+    </html>`,
+}
