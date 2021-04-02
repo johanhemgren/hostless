@@ -5,6 +5,8 @@ const { compress } = require('@architect/shared/compression')
 const getPostedData = (requestBody) => {
   const dataJson = Buffer.from(requestBody, 'base64').toString('ascii');
 
+  console.log(dataJson);
+
   return JSON.parse(dataJson);
 }
 
