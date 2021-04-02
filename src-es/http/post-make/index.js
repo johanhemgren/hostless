@@ -3,9 +3,9 @@ const { encrypt, setPassword } = require('@architect/shared/encryption')
 const { compress } = require('@architect/shared/compression')
 
 const getPostedData = (requestBody) => {
-  const dataJson = Buffer.from(requestBody, 'base64').toString('ascii');
+  console.log(requestBody);
 
-  console.log(dataJson);
+  const dataJson = Buffer.from(requestBody, 'base64').toString('ascii');
 
   return JSON.parse(dataJson);
 }
