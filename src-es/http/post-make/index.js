@@ -3,11 +3,9 @@ const { encrypt, setPassword } = require('@architect/shared/encryption')
 const { compress } = require('@architect/shared/compression')
 
 const getPostedData = (requestBody) => {
-  console.log(requestBody);
+  // const dataJson = Buffer.from(requestBody, 'base64').toString('ascii');
 
-  const dataJson = Buffer.from(requestBody, 'base64').toString('ascii');
-
-  return JSON.parse(dataJson);
+  return JSON.parse(requestBody);
 }
 
 const escapeHtml = string => string.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
