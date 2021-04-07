@@ -4,8 +4,7 @@
   "description": "Websites stored in the URL itself",
   "scripts": {
     "start": "cross-env NODE_ENV=testing npx sandbox",
-    "build": "npm run build:public && npm run build:app",
-    "build:public": "esbuild public/make.js --bundle --minify --sourcemap --outdir=public/dist",
+    "build": "npm run build:app",
     "build:app": "esbuild src-es/shared/*.js --minify --target=node12 --outdir=src/shared && esbuild src-es/http/**/*.js --minify --target=node12 --outdir=src/http"
   },
   "devDependencies": {

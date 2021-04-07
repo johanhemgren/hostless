@@ -6,9 +6,9 @@ const { errorPage } = require('@architect/shared/errorPage')
 exports.handler = async function http(req) {
   const {subdomain: remoteHost} = parse(req.headers.host);
   const decryptedString = await decrypt(req.pathParameters.dataString, remoteHost);
-  const {title, bodyHtml} = decompress(decryptedString);
+  const content = decompress(decryptedString);
 
-  if (!title || !bodyHtml) {
+  if (!content?.title || !content?.bodyHtml) {
     return errorPage;
   }
 
@@ -23,10 +23,10 @@ exports.handler = async function http(req) {
       <html lang=en>
         <head>
           <meta charset=utf-8>
-          <title>${title}</title>
+          <title>${content?.title}</title>
         </head>
         <body>
-          ${bodyHtml}
+          ${content?.bodyHtml}
         </body>
       </html>`,
   }
