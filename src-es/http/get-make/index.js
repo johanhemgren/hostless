@@ -1,10 +1,12 @@
 const { HOST, TXT_KEY_STRING } = require('@architect/shared/constants')
 const { encrypt, setPassword } = require('@architect/shared/encryption')
 const { compress } = require('@architect/shared/compression')
+const { errorPage } = require('@architect/shared/errorPage')
 
 const getPostedData = (requestBody) => {
-  console.log('process.env.NODE_ENV: ', process.env.NODE_ENV);
-  console.log('requestBody: ', requestBody);
+  if (!requestBody) {
+    return;
+  }
   
   return JSON.parse(
     process.env.NODE_ENV !== 'testing' 
@@ -16,18 +18,14 @@ const getPostedData = (requestBody) => {
 const escapeHtml = string => string.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 
 exports.handler = async function http(req) {
-  console.log(req);
-  
-  // if (req.headers.host !== process.env.HOST) {
-  //   return {
-  //     headers: {'content-type': 'text/html; charset=utf8'},
-  //     statusCode: 404,
-  //     body: error
-  //   };
-  // }
+  const requestBody = getPostedData(req.body);
 
-  const {title, hostUrl, bodyHtml, preferedPassword} = getPostedData(req.body);
-  const inputPassword = preferedPassword !== '' ? preferedPassword : null;
+  if (!requestBody?.title || !requestBody?.hostUrl || !requestBody?.bodyHtml) {
+    return errorPage;
+  }
+
+  const {title, hostUrl, bodyHtml, preferedPassword} = requestBody;
+  const inputPassword = (preferedPassword && preferedPassword !== '') ? preferedPassword : null;
   const hostname = hostUrl.replace(/(^\w+:|^)\/\//, '');
   const compressedHtml = compress({title, bodyHtml}, hostname);
   const password = setPassword(inputPassword);
