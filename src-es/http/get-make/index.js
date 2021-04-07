@@ -4,6 +4,7 @@ const { compress } = require('@architect/shared/compression')
 
 const getPostedData = (requestBody) => {
   console.log('process.env.NODE_ENV: ', process.env.NODE_ENV);
+  console.log('requestBody: ', requestBody);
   
   return JSON.parse(
     process.env.NODE_ENV !== 'testing' 
