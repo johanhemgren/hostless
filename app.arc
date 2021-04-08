@@ -5,4 +5,4 @@ hostless
 get /
 get /ess
 get /ess/:dataString
-get /make
+post /make
