@@ -39,6 +39,10 @@ exports.handler = async function http(req) {
   return {
     cors: true,
     type: 'application/json',
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'set-cookie': 'fiz=buz',
+    },
     statusCode: 200,
     body: JSON.stringify({
       urlBase,
