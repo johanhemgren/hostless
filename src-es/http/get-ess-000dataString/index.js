@@ -8,7 +8,7 @@ exports.handler = async function http(req) {
   const decryptedString = await decrypt(req.pathParameters.dataString, remoteHost);
   const content = decompress(decryptedString);
 
-  if (!content.hasOwnProperty('title') || !content.hasOwnProperty('bodyHtml')) {
+  if (!content || !content?.title || !content?.bodyHtml) {
     return errorPage;
   }
 

@@ -18,6 +18,8 @@ const getPostedData = (requestBody) => {
 const escapeHtml = string => string.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 
 exports.handler = async function http(req) {
+  console.log(req);
+  
   const requestBody = getPostedData(req.body);
 
   if (!requestBody?.title || !requestBody?.hostUrl || !requestBody?.bodyHtml) {
