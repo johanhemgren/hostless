@@ -1,7 +1,7 @@
-import { HOST, TXT_KEY_STRING } from '@architect/shared/constants'
-import { encrypt, setPassword } from '@architect/shared/encryption'
-import { compress } from '@architect/shared/compression'
-import { errorPage } from '@architect/shared/errorPage'
+const { HOST, TXT_KEY_STRING } = require('@architect/shared/constants');
+const { encrypt, setPassword } = require('@architect/shared/encryption');
+const { compress } = require('@architect/shared/compression');
+const { errorPage } = require('@architect/shared/errorPage');
 
 const getPostedData = (requestBody) => {
   if (!requestBody) {
