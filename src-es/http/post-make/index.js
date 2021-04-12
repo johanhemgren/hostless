@@ -30,6 +30,8 @@ exports.handler = async function http(req) {
     'Access-Control-Allow-Origin': '*',
   };
 
+  console.log({headers, status, type, body});
+
   return {cors: true, headers, status, type, body}
 
   // const requestBody = getPostedData(req.body);
