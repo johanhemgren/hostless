@@ -18,13 +18,11 @@ const getPostedData = (requestBody) => {
 const escapeHtml = string => string.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 
 exports.handler = async function http(req) {
-  const headers = new Headers({
-    'Access-Control-Allow-Origin': '*',
-  })
-
   return {
     cors: true,
-    headers,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
     statusCode: 200,
     type: 'application/json',
     body: JSON.stringify({ok: 'WORKS'}),
