@@ -22,6 +22,8 @@ exports.handler = async function http(req) {
   
   const requestBody = getPostedData(req.body);
 
+  console.log('requestBody', requestBody);
+
   if (!requestBody?.title || !requestBody?.hostUrl || !requestBody?.bodyHtml) {
     return errorPage;
   }
@@ -36,11 +38,13 @@ exports.handler = async function http(req) {
   const urlBase = `http://${hostname}.${HOST}/ess`;
   const url = `${urlBase}/${encodeURIComponent(encryptedString)}`;
 
+  console.log('url', url);
+
   return {
-    cors: true,
+    // cors: true,
     type: 'application/json',
     headers: {
-      'Access-Control-Allow-Origin': 'http://localhost:3000',
+      // 'Access-Control-Allow-Origin': 'http://localhost:3000',
       'set-cookie': 'fiz=buz',
     },
     statusCode: 200,
