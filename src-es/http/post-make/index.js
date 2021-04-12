@@ -17,16 +17,20 @@ const getPostedData = (requestBody) => {
 
 const escapeHtml = string => string.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 
+const permittedDomains = [
+  'http://localhost:3000',
+  'https://example.com'
+];
+
 exports.handler = async function http(req) {
-  return {
-    cors: true,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-    },
-    statusCode: 200,
-    type: 'application/json',
-    body: JSON.stringify({ok: 'WORKS'}),
-  }
+  const status = permittedDomains.includes(req.headers.origin) ? 200 : 403;
+  const type = 'application/json; charset=utf8';
+  const body = JSON.stringify({ok: 'WORKS'});
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+  };
+
+  return {cors: true, headers, status, type, body}
 
   // const requestBody = getPostedData(req.body);
 
