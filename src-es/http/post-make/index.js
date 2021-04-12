@@ -21,14 +21,13 @@ exports.handler = async function http(req) {
   return {
     cors: true,
     headers: {
-      'Content-Type': 'text/plain',
       'Access-Control-Allow-Origin': 'http://localhost:3000',
       'Access-Control-Allow-Methods': 'GET, POST',
       'Access-Control-Allow-Headers': 'X-Requested-With, Content-Type, Authorization, Origin, Accept'
       // 'set-cookie': 'fiz=buz',
     },
     statusCode: 200,
-    body: 'WORKS',
+    body: JSON.stringify({ok: 'WORKS'}),
   }
 
   // const requestBody = getPostedData(req.body);
