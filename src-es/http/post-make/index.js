@@ -18,15 +18,15 @@ const getPostedData = (requestBody) => {
 const escapeHtml = string => string.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 
 exports.handler = async function http(req) {
+  const headers = new Headers({
+    'Access-Control-Allow-Origin': '*',
+  })
+
   return {
     cors: true,
-    headers: {
-      'Access-Control-Allow-Origin': 'http://localhost:3000',
-      'Access-Control-Allow-Methods': 'GET, POST',
-      'Access-Control-Allow-Headers': 'X-Requested-With, Content-Type, Authorization, Origin, Accept'
-      // 'set-cookie': 'fiz=buz',
-    },
+    headers,
     statusCode: 200,
+    type: 'application/json',
     body: JSON.stringify({ok: 'WORKS'}),
   }
 
