@@ -40,7 +40,7 @@ exports.handler = async function http(req) {
     cors: true,
     type: 'application/json',
     headers: {
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': 'http://localhost:3000',
       'set-cookie': 'fiz=buz',
     },
     statusCode: 200,
