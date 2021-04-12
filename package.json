@@ -2,6 +2,7 @@
   "name": "hostless",
   "version": "0.0.0",
   "description": "Websites stored in the URL itself",
+  "type": "module",
   "scripts": {
     "start": "cross-env NODE_ENV=testing npx sandbox",
     "build": "npm run build:app",
